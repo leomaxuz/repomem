@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+_graphs/
+*.jsonl
+data/
+.ipynb_checkpoints/

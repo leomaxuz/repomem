@@ -1,0 +1,618 @@
+{
+ "composition": {
+  "n_raw": 1651,
+  "n": 1554,
+  "dropped": 97,
+  "kinds": {
+   "caller": 508,
+   "chain": 411,
+   "defn": 635
+  },
+  "buckets": {
+   "0-512": 369,
+   "512-2K": 360,
+   "2K-8K": 501,
+   "8K-20K": 283,
+   "20K+": 41
+  },
+  "beyond_window": 42,
+  "beyond_kinds": {
+   "defn": 33,
+   "chain": 7,
+   "caller": 2
+  },
+  "beyond_in_20k": 24,
+  "in_window_buckets": {
+   "0-512": 364,
+   "512-2K": 359,
+   "2K-8K": 496,
+   "8K-20K": 276,
+   "20K+": 17
+  }
+ },
+ "main": {
+  "E4B base": {
+   "all": 85.7,
+   "in_window": 88.1,
+   "beyond": 0.0,
+   "buckets": [
+    94.2,
+    90.0,
+    84.1,
+    84.8,
+    88.2
+   ],
+   "kinds": {
+    "defn": 85.7,
+    "chain": 76.4,
+    "caller": 93.3
+   }
+  },
+  "E4B oracle": {
+   "all": 90.8,
+   "in_window": 91.0,
+   "beyond": 83.3,
+   "buckets": [
+    92.6,
+    90.8,
+    91.3,
+    88.8,
+    88.2
+   ],
+   "kinds": {
+    "defn": 89.9,
+    "chain": 82.7,
+    "caller": 98.4
+   }
+  },
+  "E4B PFK": {
+   "all": 89.1,
+   "in_window": 89.4,
+   "beyond": 81.0,
+   "buckets": [
+    90.1,
+    89.1,
+    89.7,
+    88.0,
+    88.2
+   ],
+   "kinds": {
+    "defn": 85.5,
+    "chain": 83.2,
+    "caller": 98.4
+   }
+  },
+  "E2B base": {
+   "all": 79.8,
+   "in_window": 82.0,
+   "beyond": 0.0,
+   "buckets": [
+    90.9,
+    84.4,
+    79.6,
+    71.7,
+    76.5
+   ],
+   "kinds": {
+    "defn": 80.8,
+    "chain": 72.3,
+    "caller": 84.6
+   }
+  },
+  "E2B oracle": {
+   "all": 91.4,
+   "in_window": 91.5,
+   "beyond": 88.1,
+   "buckets": [
+    92.9,
+    88.0,
+    92.5,
+    92.4,
+    88.2
+   ],
+   "kinds": {
+    "defn": 92.4,
+    "chain": 84.2,
+    "caller": 95.9
+   }
+  },
+  "E2B PFK": {
+   "all": 91.3,
+   "in_window": 91.4,
+   "beyond": 88.1,
+   "buckets": [
+    92.6,
+    88.0,
+    92.5,
+    92.4,
+    88.2
+   ],
+   "kinds": {
+    "defn": 92.1,
+    "chain": 84.4,
+    "caller": 95.9
+   }
+  },
+  "12B base": {
+   "all": 87.4,
+   "in_window": 89.8,
+   "beyond": 0.0,
+   "buckets": [
+    94.5,
+    91.4,
+    89.7,
+    81.5,
+    94.1
+   ],
+   "kinds": {
+    "defn": 88.3,
+    "chain": 76.2,
+    "caller": 95.3
+   }
+  },
+  "12B oracle": {
+   "all": 94.2,
+   "in_window": 94.5,
+   "beyond": 83.3,
+   "buckets": [
+    94.8,
+    95.0,
+    94.6,
+    93.1,
+    100.0
+   ],
+   "kinds": {
+    "defn": 92.4,
+    "chain": 92.0,
+    "caller": 98.2
+   }
+  },
+  "31B base": {
+   "all": 84.5,
+   "in_window": 86.8,
+   "beyond": 0.0,
+   "buckets": [
+    92.6,
+    92.5,
+    90.1,
+    71.4,
+    0.0
+   ],
+   "kinds": {
+    "defn": 76.1,
+    "chain": 87.3,
+    "caller": 92.7
+   }
+  },
+  "31B oracle": {
+   "all": 94.2,
+   "in_window": 94.4,
+   "beyond": 85.7,
+   "buckets": [
+    94.5,
+    92.2,
+    96.0,
+    94.6,
+    94.1
+   ],
+   "kinds": {
+    "defn": 91.3,
+    "chain": 95.4,
+    "caller": 96.9
+   }
+  }
+ },
+ "headroom_e4b": {
+  "all": 67.0,
+  "in_window": 45.0
+ },
+ "scaling": {
+  "n": 1397,
+  "E2B": {
+   "base": 82.3,
+   "oracle": 91.6,
+   "base_b": [
+    90.7,
+    84.1,
+    79.5,
+    71.6
+   ],
+   "oracle_b": [
+    92.7,
+    87.8,
+    92.8,
+    93.5
+   ],
+   "sec": 2.05,
+   "gap_all": 9.3,
+   "gap_2k8k": 13.3,
+   "gap_8k20k": 21.9
+  },
+  "E4B": {
+   "base": 88.1,
+   "oracle": 91.0,
+   "base_b": [
+    94.1,
+    89.8,
+    83.8,
+    85.1
+   ],
+   "oracle_b": [
+    92.4,
+    90.7,
+    91.4,
+    88.4
+   ],
+   "sec": 3.56,
+   "gap_all": 2.9,
+   "gap_2k8k": 7.6,
+   "gap_8k20k": 3.3
+  },
+  "12B": {
+   "base": 89.8,
+   "oracle": 94.5,
+   "base_b": [
+    94.4,
+    91.2,
+    89.7,
+    80.0
+   ],
+   "oracle_b": [
+    94.6,
+    94.9,
+    94.5,
+    93.5
+   ],
+   "sec": 6.91,
+   "gap_all": 4.7,
+   "gap_2k8k": 4.8,
+   "gap_8k20k": 13.5
+  },
+  "31B": {
+   "base": 94.0,
+   "oracle": 94.7,
+   "base_b": [
+    94.9,
+    94.1,
+    94.3,
+    91.6
+   ],
+   "oracle_b": [
+    94.6,
+    92.1,
+    96.2,
+    95.8
+   ],
+   "sec": 11.54,
+   "gap_all": 0.7,
+   "gap_2k8k": 1.9,
+   "gap_8k20k": 4.2
+  },
+  "E2B PFK": {
+   "all": 91.6,
+   "b": [
+    92.4,
+    87.8,
+    92.8,
+    93.5
+   ],
+   "sec": 0.22
+  },
+  "E4B PFK": {
+   "all": 89.4,
+   "b": [
+    89.9,
+    89.0,
+    89.9,
+    88.4
+   ],
+   "sec": 0.34
+  }
+ },
+ "thinking": {
+  "n": 371,
+  "all": 85.7,
+  "base_same_all": 85.4,
+  "n_fit": 353,
+  "fit": 90.1,
+  "base_same_fit": 89.8
+ },
+ "position_long": {
+  "n": 523,
+  "bins": [
+   80.5,
+   86.6,
+   86.5,
+   84.0,
+   82.0
+  ]
+ },
+ "latency": {
+  "E4B base": 3.56,
+  "E4B base 20K+": 5.71,
+  "E4B PFK": 0.34,
+  "E2B PFK": 0.22,
+  "31B base": 11.54
+ },
+ "ablations": {
+  "pfk_e4b": {
+   "all": 89.1,
+   "in_window": 89.4,
+   "beyond": 81.0,
+   "retrieval_ok": 100.0,
+   "fallback": 0.0,
+   "entity_ok": 0.0
+  },
+  "pfk_e2b": {
+   "all": 91.3,
+   "in_window": 91.4,
+   "beyond": 88.1,
+   "retrieval_ok": 100.0,
+   "fallback": 0.0,
+   "entity_ok": 0.0
+  },
+  "pfk_e4b_entmodel": {
+   "all": 74.2,
+   "in_window": 74.3,
+   "beyond": 69.0,
+   "retrieval_ok": 88.0,
+   "fallback": 0.0,
+   "entity_ok": 70.5
+  },
+  "pfk_e4b_entmodel_v": {
+   "all": 88.5,
+   "in_window": 88.8,
+   "beyond": 78.6,
+   "retrieval_ok": 93.1,
+   "fallback": 6.9,
+   "entity_ok": 92.5
+  },
+  "pfk_e4b_entshort": {
+   "all": 72.4,
+   "in_window": 72.6,
+   "beyond": 66.7,
+   "retrieval_ok": 92.0,
+   "fallback": 0.0,
+   "entity_ok": 61.7
+  },
+  "pfk_e4b_entshort_v": {
+   "all": 86.2,
+   "in_window": 87.7,
+   "beyond": 31.0,
+   "retrieval_ok": 51.7,
+   "fallback": 46.7,
+   "entity_ok": 51.7
+  },
+  "pfk_e4b_drop10": {
+   "all": 84.6,
+   "in_window": 84.7,
+   "beyond": 81.0,
+   "retrieval_ok": 93.1,
+   "fallback": 0.0,
+   "entity_ok": 0.0
+  },
+  "pfk_e4b_drop30": {
+   "all": 77.6,
+   "in_window": 77.6,
+   "beyond": 78.6,
+   "retrieval_ok": 81.9,
+   "fallback": 0.0,
+   "entity_ok": 0.0
+  },
+  "pfk_e4b_drop30_fb": {
+   "all": 88.4,
+   "in_window": 88.8,
+   "beyond": 73.8,
+   "retrieval_ok": 81.9,
+   "fallback": 17.9,
+   "entity_ok": 0.0
+  }
+ },
+ "seeds": {
+  "per_seed": [
+   {
+    "n": 1423,
+    "n_beyond": 29,
+    "base": [
+     93.9,
+     92.2,
+     88.4,
+     85.5,
+     0.0,
+     88.3
+    ],
+    "pfk": [
+     91.4,
+     89.0,
+     89.3,
+     91.0,
+     89.7,
+     90.2
+    ],
+    "oracle": [
+     93.3,
+     92.2,
+     91.2,
+     93.4,
+     93.1,
+     92.4
+    ]
+   },
+   {
+    "n": 1410,
+    "n_beyond": 32,
+    "base": [
+     95.0,
+     93.5,
+     88.9,
+     85.3,
+     0.0,
+     88.6
+    ],
+    "pfk": [
+     90.4,
+     91.2,
+     91.4,
+     92.3,
+     96.9,
+     91.5
+    ],
+    "oracle": [
+     92.7,
+     92.8,
+     93.1,
+     93.4,
+     96.9,
+     93.1
+    ]
+   },
+   {
+    "n": 1423,
+    "n_beyond": 33,
+    "base": [
+     94.5,
+     91.0,
+     88.9,
+     85.0,
+     0.0,
+     87.9
+    ],
+    "pfk": [
+     91.7,
+     93.1,
+     91.1,
+     92.1,
+     87.9,
+     91.8
+    ],
+    "oracle": [
+     93.6,
+     92.8,
+     92.0,
+     92.9,
+     87.9,
+     92.6
+    ]
+   }
+  ],
+  "agg": {
+   "n": [
+    1423,
+    1410,
+    1423
+   ],
+   "n_beyond": [
+    29,
+    32,
+    33
+   ],
+   "base": [
+    [
+     94.5,
+     0.6
+    ],
+    [
+     92.2,
+     1.3
+    ],
+    [
+     88.7,
+     0.3
+    ],
+    [
+     85.3,
+     0.3
+    ],
+    [
+     0.0,
+     0.0
+    ],
+    [
+     88.3,
+     0.4
+    ]
+   ],
+   "pfk": [
+    [
+     91.2,
+     0.7
+    ],
+    [
+     91.1,
+     2.1
+    ],
+    [
+     90.6,
+     1.1
+    ],
+    [
+     91.8,
+     0.7
+    ],
+    [
+     91.5,
+     4.8
+    ],
+    [
+     91.2,
+     0.9
+    ]
+   ],
+   "oracle": [
+    [
+     93.2,
+     0.5
+    ],
+    [
+     92.6,
+     0.3
+    ],
+    [
+     92.1,
+     1.0
+    ],
+    [
+     93.2,
+     0.3
+    ],
+    [
+     92.6,
+     4.5
+    ],
+    [
+     92.7,
+     0.4
+    ]
+   ]
+  }
+ },
+ "router": {
+  "T": 8000,
+  "eval": {
+   "main": {
+    "base": 85.7,
+    "pfk": 89.1,
+    "router": 88.2,
+    "oracle": 90.8
+   },
+   "seed1": {
+    "base": 88.3,
+    "pfk": 90.2,
+    "router": 90.8,
+    "oracle": 92.4
+   },
+   "seed2": {
+    "base": 88.6,
+    "pfk": 91.5,
+    "router": 91.6,
+    "oracle": 93.1
+   },
+   "seed3": {
+    "base": 87.9,
+    "pfk": 91.8,
+    "router": 91.1,
+    "oracle": 92.6
+   }
+  }
+ }
+}
