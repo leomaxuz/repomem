@@ -63,7 +63,7 @@ The visibility check matters. Among the 508 chain candidates, **97 (19%) relied 
 
 ## 4. Setup
 
-**Models and serving.** We evaluate the competition's int4 QAT checkpoints `gemma-4-{e2b,e4b,12b,31b}-it-qat-w4a16-ct` on vLLM 0.33.0 with 2× RTX 4090 (tensor parallelism 2), greedy decoding, and thinking off unless stated. The window is `max_model_len = 32768`.
+**Models and serving.** We evaluate the competition's int4 QAT checkpoints of the Gemma family [8], `gemma-4-{e2b,e4b,12b,31b}-it-qat-w4a16-ct`, on vLLM 0.33.0 with 2× RTX 4090 (tensor parallelism 2), greedy decoding, and thinking off unless stated. The window is `max_model_len = 32768`.
 
 **31B and the common subset.** 31B's KV cache fits only 16K tokens on this hardware. Cross-size comparisons therefore use the **1,397 items that fit every model**.
 
