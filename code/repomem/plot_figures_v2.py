@@ -93,3 +93,32 @@ beyond_panel(b3, [A["base"][4][0], A["pfk"][4][0], A["oracle"][4][0]], errs=[0.0
              title=f"Prompt exceeds 32K window\n({min(nb)}–{max(nb)} items / instance)")
 fig3.tight_layout(); fig3.savefig(os.path.join(OUT, "repomem_seeds.png"), bbox_inches="tight")
 print("saved repomem_seeds.png")
+
+# ---------- Figure 4: RepoMem-OSS (graphs built with build_graph.py from 6 public repositories) ----------
+EP = os.path.join(PROJ, "experiments", "ext_numbers.json")
+if os.path.exists(EP):
+    E = json.load(open(EP)); EM = E["models"]
+    fig4, (a4, b4) = plt.subplots(1, 2, figsize=(10.2, 4.5), gridspec_kw={"width_ratios": [2.3, 1]})
+    orc = [(x + y) / 2 for x, y in zip(EM["e2b_compact"]["hop"]["single"]["buckets"], EM["e4b_compact"]["hop"]["single"]["buckets"])]
+    a4.plot(range(4), orc, color=C_ORC, lw=2, ls=(0, (4, 3)), marker="D", ms=5, label="compact oracle (mean E2B/E4B)")
+    a4.plot(range(4), EM["e4b_pfk"]["hop"]["single"]["buckets"], color=C_PFK, lw=2.6, marker="o", ms=6, label="E4B PFK-agent")
+    a4.plot(range(4), EM["e2b_pfk"]["hop"]["single"]["buckets"], color=C_PFK, lw=2.2, marker="o", ms=6, ls=(0, (1, 1.5)), label="E2B PFK-agent")
+    a4.plot(range(4), EM["e4b_full"]["hop"]["single"]["buckets"], color=C_BASE, lw=2.6, marker="s", ms=6, label="E4B baseline")
+    a4.plot(range(4), EM["e2b_full"]["hop"]["single"]["buckets"], color=C_E2B, lw=2.2, marker="v", ms=6, ls=(0, (1, 1.5)), label="E2B baseline")
+    style(a4, B4); a4.set_ylabel("Accuracy"); a4.set_ylim(60, 100)
+    a4.set_title(f"Single-hop items (n = {E['hop_n']['single']:,})", fontsize=12)
+    a4.legend(frameon=False, loc="lower left", fontsize=9.5)
+    w = 0.26
+    for j, (tag, c) in enumerate([("full", C_BASE), ("pfk", C_PFK), ("compact", C_ORC)]):
+        vals = [EM[f"{m}_{tag}"]["hop"]["multi"]["all"] for m in ("e4b", "e2b")]
+        b4.bar([x + (j - 1) * w for x in range(2)], vals, width=w, color=c,
+               label={"full": "baseline", "pfk": "PFK-agent", "compact": "oracle"}[tag])
+        for x, v in zip(range(2), vals):
+            b4.text(x + (j - 1) * w, v + 1.5, f"{v:.0f}", ha="center", fontsize=9)
+    b4.set_xticks(range(2)); b4.set_xticklabels(["E4B", "E2B"]); b4.set_ylim(0, 100); style(b4, xlabel=False)
+    b4.set_title(f"Multi-hop chains, k = 2–4\n(n = {E['hop_n']['multi']}): a reasoning ceiling", fontsize=11)
+    b4.legend(frameon=False, loc="upper right", fontsize=9)
+    fig4.suptitle("RepoMem-OSS: 6 public repositories outside the competition (flask, click, werkzeug, jinja, attrs, marshmallow)",
+                  fontsize=12)
+    fig4.tight_layout(); fig4.savefig(os.path.join(OUT, "repomem_oss.png"), bbox_inches="tight")
+    print("saved repomem_oss.png")

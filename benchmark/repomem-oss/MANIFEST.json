@@ -1,0 +1,68 @@
+{
+ "name": "RepoMem-OSS",
+ "version": "1.0",
+ "items": 1534,
+ "generation": "build_graph.py per repo; generate.py --graphs graphs --per-repo 260 --rounds 14 --seed 1",
+ "repos": [
+  {
+   "name": "flask",
+   "github": "https://github.com/pallets/flask",
+   "tag": "3.0.3",
+   "commit": "c12a5d874c5a014495eb2db8a73f40037bc813ac",
+   "license": "BSD-3-Clause",
+   "graph": "graphs/flask_3.0.3.json.gz",
+   "nodes": 818,
+   "calls_edges": 174
+  },
+  {
+   "name": "click",
+   "github": "https://github.com/pallets/click",
+   "tag": "8.1.7",
+   "commit": "874ca2bc1c30d93a4ac6e36a15ed685eafe89097",
+   "license": "BSD-3-Clause",
+   "graph": "graphs/click_8.1.7.json.gz",
+   "nodes": 864,
+   "calls_edges": 310
+  },
+  {
+   "name": "werkzeug",
+   "github": "https://github.com/pallets/werkzeug",
+   "tag": "3.0.3",
+   "commit": "f9995e967979eb694d6b31536cc65314fd7e9c8c",
+   "license": "BSD-3-Clause",
+   "graph": "graphs/werkzeug_3.0.3.json.gz",
+   "nodes": 1725,
+   "calls_edges": 783
+  },
+  {
+   "name": "jinja",
+   "github": "https://github.com/pallets/jinja",
+   "tag": "3.1.4",
+   "commit": "dd4a8b5466d8790540c181590b14db4d4d889d57",
+   "license": "BSD-3-Clause",
+   "graph": "graphs/jinja_3.1.4.json.gz",
+   "nodes": 1409,
+   "calls_edges": 568
+  },
+  {
+   "name": "attrs",
+   "github": "https://github.com/python-attrs/attrs",
+   "tag": "23.2.0",
+   "commit": "9e443b18527dc96b194e92805fa751cbf8434ba9",
+   "license": "MIT",
+   "graph": "graphs/attrs_23.2.0.json.gz",
+   "nodes": 801,
+   "calls_edges": 366
+  },
+  {
+   "name": "marshmallow",
+   "github": "https://github.com/marshmallow-code/marshmallow",
+   "tag": "3.21.3",
+   "commit": "b9646e326c511c11fc07aef4aa0004c14a5d454c",
+   "license": "MIT",
+   "graph": "graphs/marshmallow_3.21.3.json.gz",
+   "nodes": 998,
+   "calls_edges": 133
+  }
+ ]
+}

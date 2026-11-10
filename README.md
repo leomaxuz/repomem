@@ -19,6 +19,9 @@ RepoMem is a distance-controlled benchmark for code language models. It holds a 
 - PFK-agent is robust to self-grounded entities (88.5%) and to 30% missing graph edges (88.4% with a full-context fallback).
 - All results replicate on 3 regenerated benchmark instances.
 - **Data finding:** 19% of raw chain candidates relied on `calls` edges that do not appear in the source (in the cases we inspected, they point callee → caller). The generator filters these items out (1,651 → 1,554 well-posed items).
+- **[RepoMem-OSS](benchmark/repomem-oss/)** is a fully open companion benchmark: 1,534 items from flask, click, werkzeug, jinja, attrs and marshmallow, with graphs built by `build_graph.py`. The same pattern holds there. On single-hop items, E2B falls from 91.7% to 65.0% with distance, and PFK-agent restores it to 93.3%. Multi-hop chains expose a reasoning ceiling: even the oracle scores only ~25%.
+
+![RepoMem-OSS](figures/repomem_oss.png)
 
 ![Scaling](figures/repomem_scaling.png)
 
@@ -26,7 +29,8 @@ RepoMem is a distance-controlled benchmark for code language models. It holds a 
 
 | path | contents |
 |---|---|
-| `code/repomem/` | benchmark generator, evaluator, PFK-agent, analysis and plotting ([details](code/repomem/README.md)) |
+| `code/repomem/` | benchmark generator, code-graph builder (`build_graph.py`), evaluator, PFK-agent, analysis and plotting ([details](code/repomem/README.md)) |
+| `benchmark/repomem-oss/` | **RepoMem-OSS**: the open benchmark (items, graphs, manifest, source licenses) |
 | `scripts/` | vLLM serving (`serve_model.sh`, `serve_e4b.sh`, `serve_e2b.sh`) and the experiment chains used for the paper |
 | `notebook/repomem_kaggle.ipynb` | Kaggle notebook: regenerates the benchmark from competition data, checks it, runs PFK retrieval offline, renders the results |
 | `experiments/` | aggregate results (JSON / Markdown) behind every table in the paper |
@@ -57,6 +61,8 @@ python code/repomem/summarize.py --out REPORT.md --add "baseline:base.jsonl" --a
 The scripts in `scripts/` were written for our server layout (`~/gemma4-paper`, `bin/`); adjust the paths to your setup.
 
 ## Data
+
+**RepoMem-OSS** (in `benchmark/repomem-oss/`) is freely downloadable. It is built only from public, permissively licensed repositories, and their licenses are included.
 
 The competition code graphs and the benchmark items generated from them are **Competition Data** of the Gemma 4 Developer Agent competition, so **they are not redistributed here**. `generate.py` rebuilds the exact benchmark deterministically from the competition data. It also accepts any repository code graph in the same NetworkX-JSON format (nodes with `id`/`name`/`text`, `calls` edges).
 

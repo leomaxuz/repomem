@@ -176,11 +176,12 @@ def make_caller(nodes, callers, rng, n_distract):
                 meta={"target": target, "caller": caller, "question": q})
 
 
-def gen_for_graph(path, rng, per_repo):
+def gen_for_graph(path, rng, per_repo, rounds=1):
     nodes, calls, callers = load_graph(path)
     if len(nodes) < 30:
         return []
     out = []
+    seen = set()
     repo = Path(path).stem
     # distance darajalari: funksiya bloklari soni (token masofasiga ta'sir qiladi)
     defn_sizes = [4, 8, 16, 32, 64]
@@ -195,6 +196,9 @@ def gen_for_graph(path, rng, per_repo):
             plan.append(("chain", (k, d)))
     for d in distracts:
         plan.append(("caller", d))
+    if rounds > 1:
+        # few large repositories instead of many snapshots: repeat the plan, drop duplicates
+        plan = plan * rounds
     rng.shuffle(plan)
     for kind, param in plan:
         if len(out) >= budget:
@@ -207,6 +211,11 @@ def gen_for_graph(path, rng, per_repo):
             item = make_chain(nodes, calls, rng, k, d)
         else:
             item = make_caller(nodes, callers, rng, param)
+        if item and rounds > 1:
+            key = (item["meta"]["question"], item["prompt"][:2000])
+            if key in seen:
+                continue
+            seen.add(key)
         if item:
             item["id"] = f"{repo}:{kind}:{len(out)}"
             item["repo"] = repo
@@ -221,6 +230,8 @@ def main():
     ap.add_argument("--per-repo", type=int, default=40)
     ap.add_argument("--max-graphs", type=int, default=0, help="0 = hammasi")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--rounds", type=int, default=1,
+                    help="repeat the per-graph probe plan this many times (for few, large repositories)")
     ap.add_argument("--no-textual-filter", action="store_true",
                     help="keep chain items whose call steps are not visible in the source (ill-posed; v1 behaviour)")
     a = ap.parse_args()
@@ -233,7 +244,7 @@ def main():
     dropped = 0
     for f in files:
         try:
-            items = gen_for_graph(f, rng, a.per_repo)
+            items = gen_for_graph(f, rng, a.per_repo, a.rounds)
             if not a.no_textual_filter:
                 # Well-posedness: every chain step A -> B must be visible as a call `B(` in A's source.
                 # Some competition-graph `calls` edges point the wrong way (callee -> caller); such items
